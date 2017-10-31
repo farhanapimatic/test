@@ -22,7 +22,7 @@
     "Parameters": []
   },
   "ImageUri": "",
-  "Description": "\nThe Telstra Messaging API allows your applications to send and receive SMS text messages from Australia's leading network operator.\n\nIt also allows your application to track the delivery status of both sent and received SMS messages.\n",
+  "Description": "\nThe Telstra Messaging API allows your applications to send and receive SMS text messages from Australia's leading network operator.\n\nIt also allows your application to track the delivery status of both sent and received SMS messages...\n",
   "Version": "2.2.2",
   "AdditionalHeaders": [],
   "Authentication": {
