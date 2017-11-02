@@ -46,7 +46,7 @@
       "Name": "Get SMS Status",
       "Description": "Get SMS Status",
       "HTTPMethod": "POST",
-      "Group": "Messaging",
+      "Group": "Status",
       "RequiresAuthentication": true,
       "Route": "/messages/sms/{messageId}/status",
       "Response": {
@@ -154,9 +154,120 @@
       "WrapBodyInObject": false
     },
     {
+      "Name": "Retrieve messages sent",
+      "Description": "Retrieve all messages sent to a number in a specific time period",
+      "HTTPMethod": "POST",
+      "Group": "Messaging",
+      "RequiresAuthentication": true,
+      "Route": "/messages/sms/{phone_number}",
+      "Response": {
+        "Optional": false,
+        "Type": "InboundPollResponse",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Attributes": {},
+        "IsArray": true,
+        "IsMap": false,
+        "Name": "response",
+        "Description": "Success"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [
+        "NSMS"
+      ],
+      "Parameters": [
+        {
+          "ParamFormat": "Template",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "phone_number",
+          "Description": "The phone number to which messages were sent",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Body",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "date_start",
+          "Description": "The time period to check",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [
+        {
+          "ErrorCode": 400,
+          "ErrorMessage": "Invalid or missing request parameters",
+          "ErrorTypeName": "Error_Error_Error_Error"
+        },
+        {
+          "ErrorCode": 401,
+          "ErrorMessage": "Invalid or no credentials passed in the request",
+          "ErrorTypeName": "Error_Error_Error_Error"
+        },
+        {
+          "ErrorCode": 403,
+          "ErrorMessage": "Authorization credentials passed and accepted but account does\nnot have permission",
+          "ErrorTypeName": "Error_Error_Error_Error"
+        },
+        {
+          "ErrorCode": 404,
+          "ErrorMessage": "The requested URI does not exist",
+          "ErrorTypeName": "Error_Error_Error_Error"
+        },
+        {
+          "ErrorCode": 405,
+          "ErrorMessage": "The requested resource does not support the supplied verb",
+          "ErrorTypeName": "Error_Error_Error_Error"
+        },
+        {
+          "ErrorCode": 415,
+          "ErrorMessage": "API does not support the requested content type",
+          "ErrorTypeName": "Error_Error_Error_Error"
+        },
+        {
+          "ErrorCode": 422,
+          "ErrorMessage": "The request is formed correctly, but due to some condition\nthe request cannot be processed e.g. email is required and it is not provided\nin the request",
+          "ErrorTypeName": "Error_Error_Error_Error"
+        },
+        {
+          "ErrorCode": 501,
+          "ErrorMessage": "The HTTP method being used has not yet been implemented for\nthe requested resource",
+          "ErrorTypeName": "Error_Error_Error_Error"
+        },
+        {
+          "ErrorCode": 503,
+          "ErrorMessage": "The service requested is currently unavailable",
+          "ErrorTypeName": "Error_Error_Error_Error"
+        },
+        {
+          "ErrorCode": 0,
+          "ErrorMessage": "An internal error occurred when processing the request",
+          "ErrorTypeName": "Error_Error_Error_Error"
+        }
+      ],
+      "TestCases": [],
+      "WrapBodyInObject": false
+    },
+    {
       "Name": "Retrieve SMS Responses",
       "Description": "Retrieve SMS Responses",
-      "HTTPMethod": "POST",
+      "HTTPMethod": "GET",
       "Group": "Messaging",
       "RequiresAuthentication": true,
       "Route": "/messages/sms",
@@ -1064,7 +1175,8 @@
           "Description": "",
           "DefaultValue": ""
         }
-      ]
+      ],
+      "ExampleValue": "{\n    \"to\": \"+114155552671\",\n    \"receivedTimestamp\": \"2016-03-13T12:52:32.123Z\",\n    \"sentTimestamp\": \"2016-03-13T12:51:32.123Z\",\n    \"status\": \"PEND\"}"
     },
     {
       "Name": "Status",
@@ -1519,7 +1631,8 @@
           "Description": "Optional message ID of the SMS you sent. Use this ID to view\nthe message status or get responses.",
           "DefaultValue": ""
         }
-      ]
+      ],
+      "ExampleValue": "{\n    \"to\": \"+114155552671\",\n    \"from\": \"+114156669231\",\n    \"body\": \"test message\",\n        \"receivedTimestamp\": \"2016-03-13T12:52:32.123Z\",\n    \"moreMessages\": 0,\n    \"messageId\": \"123456\"}"
     },
     {
       "Name": "Error_Error_Error_Error",
