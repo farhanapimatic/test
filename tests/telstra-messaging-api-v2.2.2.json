@@ -304,20 +304,6 @@
           "Name": "phone_number",
           "Description": "The phone number to which messages were sent",
           "DefaultValue": ""
-        },
-        {
-          "ParamFormat": "Body",
-          "Optional": false,
-          "Type": "String",
-          "Constant": false,
-          "IsStream": false,
-          "IsAttribute": false,
-          "Attributes": {},
-          "IsArray": false,
-          "IsMap": false,
-          "Name": "date_start",
-          "Description": "The phone number to which messages were sent",
-          "DefaultValue": ""
         }
       ],
       "Errors": [
