@@ -1,5 +1,5 @@
 {
-  "Name": "Telstra Messaging API hah",
+  "Name": "Telstra Messaging API",
   "BaseUri": "https://tapi.telstra.com/v2",
   "ServerConfiguration": {
     "DefaultEnvironment": "production",
