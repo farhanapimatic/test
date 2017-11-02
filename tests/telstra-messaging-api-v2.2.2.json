@@ -1,5 +1,5 @@
 {
-  "Name": "Telstra SMS Messaging API",
+  "Name": "Telstra Messaging API",
   "BaseUri": "https://tapi.telstra.com/v2",
   "ServerConfiguration": {
     "DefaultEnvironment": "production",
@@ -22,7 +22,7 @@
     "Parameters": []
   },
   "ImageUri": "",
-  "Description": "\nThe Telstra SMS Messaging API allows your applications to send and receive SMS text messages from Australia's leading network operator.\n\nIt also allows your application to track the delivery status of both sent and received SMS messages...\n",
+  "Description": "\nThe Telstra SMS Messaging API allows your applications to send and receive SMS text messages from Australia's leading network operator.\n\nIt also allows your application to track the delivery status of both sent and received SMS messages.\n",
   "Version": "2.2.2",
   "AdditionalHeaders": [],
   "Authentication": {
@@ -46,7 +46,7 @@
       "Name": "Get SMS Status",
       "Description": "Get SMS Status",
       "HTTPMethod": "GET",
-      "Group": "Status",
+      "Group": "Messaging",
       "RequiresAuthentication": true,
       "Route": "/messages/sms/{messageId}/status",
       "Response": {
@@ -81,6 +81,20 @@
           "IsMap": false,
           "Name": "messageId",
           "Description": "Unique identifier of a message - it is the value returned from\na previous POST call to https://api.telstra.com/v2/messages/sms",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Body",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "receiverNumber",
+          "Description": "The phone number to which the message was sent",
           "DefaultValue": ""
         }
       ],
@@ -165,7 +179,36 @@
       "RequiredScopes": [
         "NSMS"
       ],
-      "Parameters": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Template",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "phone_number",
+          "Description": "The phone number to which messages were sent",
+          "DefaultValue": ""
+        },
+        {
+          "ParamFormat": "Body",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "date_start",
+          "Description": "The phone number to which messages were sent",
+          "DefaultValue": ""
+        }
+      ],
       "Errors": [
         {
           "ErrorCode": 400,
