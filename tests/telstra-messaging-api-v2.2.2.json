@@ -45,7 +45,7 @@
     {
       "Name": "Get SMS Status",
       "Description": "Get SMS Status",
-      "HTTPMethod": "GET",
+      "HTTPMethod": "POST",
       "Group": "Messaging",
       "RequiresAuthentication": true,
       "Route": "/messages/sms/{messageId}/status",
@@ -156,7 +156,7 @@
     {
       "Name": "Retrieve SMS Responses",
       "Description": "Retrieve SMS Responses",
-      "HTTPMethod": "GET",
+      "HTTPMethod": "POST",
       "Group": "Messaging",
       "RequiresAuthentication": true,
       "Route": "/messages/sms",
