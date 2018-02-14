@@ -1,0 +1,64 @@
+{
+	"info": {
+		"name": "APIMaticCI-embedded",
+		"_postman_id": "ab46910f-129e-158c-4312-66a51ba57de5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Inplace Import With File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.apimatic.apiEntity.full.v1+json"
+					},
+					{
+						"key": "Authorization",
+						"value": "X-Auth-Key {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"description": "",
+							"type": "file",
+							"src": "tests/telstra-messaging-api.json"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/api-entities/{{apiEntityId}}/file-import",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"api-entities",
+						"{{apiEntityId}}",
+						"file-import"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

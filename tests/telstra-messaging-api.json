@@ -1,0 +1,1516 @@
+{
+  "Name": "Telstra Messaging API",
+  "BaseUri": "https://tapi.telstra.com/v2",
+  "ServerConfiguration": {
+    "DefaultEnvironment": "production",
+    "DefaultServer": "default",
+    "Environments": [
+      {
+        "Name": "production",
+        "Servers": [
+          {
+            "Name": "default",
+            "Url": "https://tapi.telstra.com/v2"
+          }
+        ]
+      }
+    ],
+    "Parameters": []
+  },
+  "ImageUri": "",
+  "Description": "This Is the test we This is the strange thing to fo to do",
+  "Version": "1.0",
+  "AdditionalHeaders": [],
+  "Authentication": {
+    "Type": "OAuth_v2_BearerToken",
+    "AuthType": "OAuth_v2_BearerToken",
+    "Parameters": [],
+    "AuthGrantTypes": [],
+    "AuthScopes": [],
+    "Scopes": []
+  },
+  "Endpoints": [
+    {
+      "Name": "Create Subscription test",
+      "Description": "Create Subscription",
+      "HTTPMethod": "POST",
+      "Group": "Provisioning",
+      "RequiresAuthentication": true,
+      "Route": "/messages/provisioning/subscriptions",
+      "Response": {
+        "Optional": false,
+        "Type": "ProvisionNumberResponse",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n  \"activeDays\": 0,\n  \"notifyURL\": \"\",\n  \"destinationAddress\": \"\"\n}",
+        "Attributes": {},
+        "Nullable": false,
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Body",
+          "Optional": false,
+          "Type": "ProvisionNumberRequest",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "body",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [
+        {
+          "ErrorCode": 403,
+          "ErrorMessage": "Authorization credentials passed and accepted but account does not have permission"
+        }
+      ],
+      "TestCases": [
+        {
+          "Name": "Create Subscription1",
+          "Description": "Create Subscription",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": false,
+              "Name": "body",
+              "Value": "{}"
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [
+            {
+              "CheckValue": false,
+              "Name": "Content-Type",
+              "Value": "application/json"
+            }
+          ],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{  \"activeDays\": 0,  \"notifyURL\": \"\",  \"destinationAddress\": \"\"}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Send MMS",
+      "Description": "Send MMS",
+      "HTTPMethod": "POST",
+      "Group": "Messaging",
+      "RequiresAuthentication": true,
+      "Route": "/messages/mms",
+      "Response": {
+        "Optional": false,
+        "Type": "Dynamic",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Attributes": {},
+        "Nullable": false,
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Body",
+          "Optional": false,
+          "Type": "Send MMS Request",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "body",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [
+        {
+          "ErrorCode": 490,
+          "ErrorMessage": "The requested resource does not support the supplied verb"
+        },
+        {
+          "ErrorCode": 415,
+          "ErrorMessage": "API does not support the requested content type"
+        },
+        {
+          "ErrorCode": 422,
+          "ErrorMessage": "The request is formed correctly, but due to some condition\nthe request cannot be processed e.g. email is required and it is not provided\n\nin the request"
+        },
+        {
+          "ErrorCode": 501,
+          "ErrorMessage": "The HTTP method being used has not yet been implemented for\nthe requested resource"
+        },
+        {
+          "ErrorCode": 503,
+          "ErrorMessage": "The service requested is currently unavailable"
+        }
+      ],
+      "TestCases": [
+        {
+          "Name": "Send MMS1",
+          "Description": "Send MMS",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": false,
+              "Name": "body",
+              "Value": "{  \"from\": \"\",  \"to\": \"\",  \"subject\": \"\",  \"replyRequest\": false,  \"MMSContent\": [    {      \"type\": \"\",      \"filename\": \"\",      \"payload\": \"\"    }  ]}"
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "",
+          "ExpectedBodyMatchMode": "NONE",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Get MMS Status",
+      "Description": "Get MMS Status",
+      "HTTPMethod": "GET",
+      "Group": "Messaging",
+      "RequiresAuthentication": true,
+      "Route": "/messages/mms/{messageid}/status",
+      "Response": {
+        "Optional": false,
+        "Type": "OutboundPollResponse",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n  \"status\": \"PEND\"\n}",
+        "Attributes": {},
+        "Nullable": false,
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Template",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "messageid",
+          "Description": "Unique identifier of a message - it is the value returned from\na previous POST call to https://api.telstra.com/v2/messages/mms",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [
+        {
+          "ErrorCode": 405,
+          "ErrorMessage": "The requested resource does not support the supplied verb"
+        },
+        {
+          "ErrorCode": 415,
+          "ErrorMessage": "API does not support the requested content type"
+        },
+        {
+          "ErrorCode": 422,
+          "ErrorMessage": "The request is formed correctly, but due to some condition\nthe request cannot be processed e.g. email is required and it is not provided\n\nin the request"
+        },
+        {
+          "ErrorCode": 501,
+          "ErrorMessage": "The HTTP method being used has not yet been implemented for\nthe requested resource"
+        },
+        {
+          "ErrorCode": 503,
+          "ErrorMessage": "The service requested is currently unavailable"
+        }
+      ],
+      "TestCases": [],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Send SMS",
+      "Description": "Send SMS",
+      "HTTPMethod": "POST",
+      "Group": "Messaging",
+      "RequiresAuthentication": true,
+      "Route": "/messages/sms",
+      "Response": {
+        "Optional": false,
+        "Type": "MessageSentResponse",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n  \"messages\": [\n    {\n      \"to\": \"\",\n      \"deliveryStatus\": \"\",\n      \"messageId\": \"\",\n      \"messageStatusLink\": \"\"\n    }\n  ],\n  \"messageType\": \"\",\n  \"numberSegments\": 0,\n  \"numberDestinations\": 0\n}",
+        "Attributes": {},
+        "Nullable": false,
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Body",
+          "Optional": false,
+          "Type": "SendSMSRequest",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "body",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [
+        {
+          "ErrorCode": 405,
+          "ErrorMessage": "The requested resource does not support the supplied verb"
+        },
+        {
+          "ErrorCode": 415,
+          "ErrorMessage": "API does not support the requested content type"
+        },
+        {
+          "ErrorCode": 422,
+          "ErrorMessage": "The request is formed correctly, but due to some condition\nthe request cannot be processed e.g. email is required and it is not provided\n\nin the request"
+        },
+        {
+          "ErrorCode": 501,
+          "ErrorMessage": "The HTTP method being used has not yet been implemented for\nthe requested resource"
+        },
+        {
+          "ErrorCode": 503,
+          "ErrorMessage": "The service requested is currently unavailable"
+        }
+      ],
+      "TestCases": [
+        {
+          "Name": "Send SMS1",
+          "Description": "Send SMS",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": false,
+              "Name": "body",
+              "Value": "{  \"to\": \"\",  \"body\": \"\"}"
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [
+            {
+              "CheckValue": false,
+              "Name": "Content-Type",
+              "Value": "application/json"
+            }
+          ],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "{  \"messages\": [    {      \"to\": \"\",      \"deliveryStatus\": \"\",      \"messageId\": \"\",      \"messageStatusLink\": \"\"    }  ],  \"messageType\": \"\",  \"numberSegments\": 0,  \"numberDestinations\": 0}",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Retrieve SMS Responses",
+      "Description": "Retrieve SMS Responses",
+      "HTTPMethod": "GET",
+      "Group": "Messaging",
+      "RequiresAuthentication": true,
+      "Route": "/messages/sms",
+      "Response": {
+        "Optional": false,
+        "Type": "InboundPollResponse",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "[\n  {}\n]",
+        "Attributes": {},
+        "Nullable": false,
+        "IsArray": true,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [],
+      "Errors": [
+        {
+          "ErrorCode": 405,
+          "ErrorMessage": "The requested resource does not support the supplied verb"
+        },
+        {
+          "ErrorCode": 415,
+          "ErrorMessage": "API does not support the requested content type"
+        },
+        {
+          "ErrorCode": 422,
+          "ErrorMessage": "The request is formed correctly, but due to some condition\nthe request cannot be processed e.g. email is required and it is not provided\n\nin the request"
+        },
+        {
+          "ErrorCode": 501,
+          "ErrorMessage": "The HTTP method being used has not yet been implemented for\nthe requested resource"
+        },
+        {
+          "ErrorCode": 503,
+          "ErrorMessage": "The service requested is currently unavailable"
+        }
+      ],
+      "TestCases": [
+        {
+          "Name": "Retrieve SMS Responses1",
+          "Description": "Retrieve SMS Responses",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [
+            {
+              "CheckValue": false,
+              "Name": "Content-Type",
+              "Value": "application/json"
+            }
+          ],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "[  {}]",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Get SMS Status",
+      "Description": "Get SMS Status",
+      "HTTPMethod": "GET",
+      "Group": "Messagingname",
+      "RequiresAuthentication": true,
+      "Route": "/messages/sms/{messageId}/status",
+      "Response": {
+        "Optional": false,
+        "Type": "OutboundPollResponse",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "{\n  \"status\": \"PEND\"\n}",
+        "Attributes": {},
+        "Nullable": false,
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Template",
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "messageId",
+          "Description": "Unique identifier of a message - it is the value returned from\na previous POST call to https://api.telstra.com/v2/messages/sms",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [
+        {
+          "ErrorCode": 405,
+          "ErrorMessage": "The requested resource does not support the supplied verb"
+        },
+        {
+          "ErrorCode": 415,
+          "ErrorMessage": "API does not support the requested content type"
+        },
+        {
+          "ErrorCode": 422,
+          "ErrorMessage": "The request is formed correctly, but due to some condition\nthe request cannot be processed e.g. email is required and it is not provided\n\nin the request"
+        },
+        {
+          "ErrorCode": 501,
+          "ErrorMessage": "The HTTP method being used has not yet been implemented for\nthe requested resource"
+        },
+        {
+          "ErrorCode": 503,
+          "ErrorMessage": "The service requested is currently unavailable"
+        }
+      ],
+      "TestCases": [],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Delete Subscription",
+      "Description": "Delete Subscription",
+      "HTTPMethod": "DELETE",
+      "Group": "Provisioning",
+      "RequiresAuthentication": true,
+      "Route": "/messages/provisioning/subscriptions",
+      "Response": {
+        "Optional": false,
+        "Type": "Void",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Attributes": {},
+        "Nullable": false,
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [],
+      "Errors": [
+        {
+          "ErrorCode": 403,
+          "ErrorMessage": "Authorization credentials passed and accepted but account does not have permission"
+        }
+      ],
+      "TestCases": [
+        {
+          "Name": "Delete Subscription1",
+          "Description": "Delete Subscription",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "",
+          "ExpectedBodyMatchMode": "NONE",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
+      "Name": "Get Subscription",
+      "Description": "Get Subscription",
+      "HTTPMethod": "GET",
+      "Group": "Provisioning",
+      "RequiresAuthentication": true,
+      "Route": "/messages/provisioning/subscriptions",
+      "Response": {
+        "Optional": false,
+        "Type": "ProvisionNumberResponse",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Example": "[\n  {\n    \"activeDays\": 0,\n    \"notifyURL\": \"\",\n    \"destinationAddress\": \"\"\n  }\n]",
+        "Attributes": {},
+        "Nullable": false,
+        "IsArray": true,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [],
+      "Errors": [
+        {
+          "ErrorCode": 403,
+          "ErrorMessage": "Authorization credentials passed and accepted but account does not have permission"
+        }
+      ],
+      "TestCases": [
+        {
+          "Name": "Get Subscription1",
+          "Description": "Get Subscription",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [
+            {
+              "CheckValue": false,
+              "Name": "Content-Type",
+              "Value": "application/json"
+            }
+          ],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "[  {    \"activeDays\": 0,    \"notifyURL\": \"\",    \"destinationAddress\": \"\"  }]",
+          "ExpectedBodyMatchMode": "RAW",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    }
+  ],
+  "CustomTypes": [
+    {
+      "Name": "InboundPollResponse",
+      "ImplementationType": "Structure",
+      "Description": "Poll for incoming messages returning the latest. Only works if no\ncallback url was specified when provisioning a number.",
+      "Fields": [
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "to",
+          "Description": "The phone number (recipient) that the message was sent to(in\nE.164 format).",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "from",
+          "Description": "The phone number (sender) that the message was sent from (in\nE.164 format).",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "body",
+          "Description": "Text body of the message that was sent",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "receivedTimestamp",
+          "Description": "The date and time when the message was recieved by recipient.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "Precision",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {
+            "ExclusiveMaximum": false,
+            "ExclusiveMinimum": false
+          },
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "moreMessages",
+          "Description": "Indicates if there are more messages that can be polled from\nthe server. 0=No more messages available. Anything else indicates there\nare more messages on the server.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "messageId",
+          "Description": "Optional message ID of the SMS you sent. Use this ID to view\nthe message status or get responses.",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "ErrorErrorError62",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "status",
+          "Description": "A short error code",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "message",
+          "Description": "Message describing the error.",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "status",
+      "ImplementationType": "Enumeration",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "PEND",
+          "Description": "",
+          "DefaultValue": "PEND"
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "SENT",
+          "Description": "",
+          "DefaultValue": "SENT"
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "DELIVRD",
+          "Description": "",
+          "DefaultValue": "DELIVRD"
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "EXPIRED",
+          "Description": "",
+          "DefaultValue": "EXPIRED"
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "DELETED",
+          "Description": "",
+          "DefaultValue": "DELETED"
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "UNDVBL",
+          "Description": "",
+          "DefaultValue": "UNDVBL"
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "REJECTED",
+          "Description": "",
+          "DefaultValue": "REJECTED"
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "READ",
+          "Description": "",
+          "DefaultValue": "READ"
+        }
+      ]
+    },
+    {
+      "Name": "SendSMSRequest",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "to",
+          "Description": "Phone number (in E.164 format) to send the SMS to. This number\ncan be in international format if preceeded by a ‘+’, or in national format.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "body",
+          "Description": "The text body of the message. Messages longer than 160 characters\nwill be counted as multiple messages.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "from",
+          "Description": "Phone number (in E.164 format) the SMS was sent from. If not\npresent, the serverice will use the mobile number associated with the application,\nor it be an Alphanumeric address of up to 11 characters.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "Precision",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {
+            "ExclusiveMaximum": false,
+            "ExclusiveMinimum": false
+          },
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "validity",
+          "Description": "How long the platform should attempt to deliver the message for.\nThis period is specified in minutes from the message",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "Precision",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {
+            "ExclusiveMaximum": false,
+            "ExclusiveMinimum": false
+          },
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "scheduledDelivery",
+          "Description": "How long the platform should wait before attempting to send the\nmessage - specified in minutes.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "notifyURL",
+          "Description": "Contains a URL that will be called once your message has been\nprocessed. The status may be delivered, expired, deleted, etc.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "Boolean",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "replyRequest",
+          "Description": "If set to true, the reply message functionality will be implemented\nand the to address will be ignored if present. If false or not present,\nthen normal message handling is implemented.",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Send MMS Request",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "from",
+          "Description": "This will be the source address that will be displayed on the\nreceiving device. If it is not present then it will default to the MSISDN\nassigned to the app. If replyRequest is set to true, then this field will\nbe ignored.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "to",
+          "Description": "This is the destination address.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "subject",
+          "Description": "The subject that will be used in an MMS message.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "Boolean",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "replyRequest",
+          "Description": "If set to true, the reply message functionality will be implemented\nand the to address will be ignored if present.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "MMSContent",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": true,
+          "IsMap": false,
+          "Name": "MMSContent",
+          "Description": "An Array of content that will be sent in an MMS message. If this\narray is present it will cause the “body” element to be ignored, and the\nmessage will be sent as an MMS.",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "MMSContent",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "type",
+          "Description": "The following types are supported audio/amr     audio/aac     audio/mp3\naudio/mpeg3     audio/mpeg     audio/mpg     audio/wav     audio/3gpp     audio/mp4\n     image/gif     image/jpeg     image/jpg     image/png     image/bmp     video/mpeg4\n     video/mp4     video/mpeg     video/3gpp     video/3gp     video/h263     text/plain\n     text/x-vCard     text/x-vCalendar",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "filename",
+          "Description": "The file name to be associated with the content. Some devices\nwill display this file name with a placeholder for the content.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "payload",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "ErrorErrorErrorError",
+      "ImplementationType": "Structure",
+      "Description": "Returns error status code and message",
+      "Fields": [
+        {
+          "Optional": true,
+          "Type": "Precision",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {
+            "ExclusiveMaximum": false,
+            "ExclusiveMinimum": false
+          },
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "status",
+          "Description": "The status code.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "message",
+          "Description": "Message describing the error.",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "MessageSentResponse",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "Message",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": true,
+          "IsMap": false,
+          "Name": "messages",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "messageType",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "Precision",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {
+            "ExclusiveMaximum": false,
+            "ExclusiveMinimum": false
+          },
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "numberSegments",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "Precision",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {
+            "ExclusiveMaximum": false,
+            "ExclusiveMinimum": false
+          },
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "numberDestinations",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "Message",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "to",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "deliveryStatus",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "messageId",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "messageStatusLink",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "OutboundPollResponse",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "to",
+          "Description": "The phone number (recipient) the message was sent to (in E.164\nformat).",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "receivedTimestamp",
+          "Description": "The date and time when the message was recieved by recipient.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "sentTimestamp",
+          "Description": "The date and time when the message was sent.",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "status",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "status",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "ProvisionNumberRequest",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": true,
+          "Type": "Precision",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {
+            "ExclusiveMaximum": false,
+            "ExclusiveMinimum": false
+          },
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "activeDays",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "notifyURL",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "ProvisionNumberResponse",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "Precision",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {
+            "ExclusiveMaximum": false,
+            "ExclusiveMinimum": false
+          },
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "activeDays",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "notifyURL",
+          "Description": "",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "destinationAddress",
+          "Description": "The mobile phone number that was allocated",
+          "DefaultValue": ""
+        }
+      ]
+    },
+    {
+      "Name": "ErrorError",
+      "ImplementationType": "Structure",
+      "Fields": [
+        {
+          "Optional": false,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "status",
+          "Description": "A short error code",
+          "DefaultValue": ""
+        },
+        {
+          "Optional": true,
+          "Type": "String",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "message",
+          "Description": "Message describing the error.",
+          "DefaultValue": ""
+        }
+      ]
+    }
+  ],
+  "CodeGenSettings": {
+    "SynchronyMode": "Asynchronous",
+    "ModelSerializationScheme": "Json",
+    "ArraySerialization": "Indexed",
+    "Nullify404": false,
+    "UseHttpMethodPrefix": true,
+    "UseModelPrefix": false,
+    "UseExceptionPrefix": true,
+    "UseEnumPrefix": true,
+    "UseControllerPrefix": true,
+    "UseConstructorsForConfig": false,
+    "Timeout": 0.0,
+    "AndroidUseAppManifest": false,
+    "iOSUseAppInfoPlist": false,
+    "iOSGenerateCoreData": false,
+    "CollapseParamsToArray": false,
+    "RunscopeEnabled": false,
+    "AndroidHttpClient": "UNIREST",
+    "ObjCHttpClient": "UNIREST",
+    "CSharpHttpClient": "UNIREST",
+    "NodeHttpClient": "NODE_REQUEST",
+    "JavaUsePropertiesConfig": false,
+    "PHPHttpClient": "UNIREST",
+    "EnablePHPComposerVersionString": false,
+    "DateTimeFormat": "",
+    "EnableAdditionalModelProperties": false,
+    "PreserveParameterOrder": true,
+    "ValidateRequiredParameters": false,
+    "AppendContentHeaders": true,
+    "GenerateInterfaces": false,
+    "UseCommonSDKLibrary": false,
+    "ParameterArrayFormat": "ParamArrayWithIndex",
+    "SecurityProtocols": [
+      "Ssl3",
+      "Tls"
+    ],
+    "GenerateTravisConfig": false,
+    "GenerateCircleConfig": false,
+    "GenerateAppveyorConfig": false,
+    "GenerateJenkinsConfig": false,
+    "EnableLogging": false,
+    "EnableHttpCache": false,
+    "Retries": 0,
+    "RetryInterval": 1.0,
+    "GenerateAdvancedDocs": true,
+    "StoreTimezoneInformation": false,
+    "UnderscoreNumbers": true,
+    "UseSingletonPattern": true
+  },
+  "Errors": [
+    {
+      "ErrorCode": 400,
+      "ErrorMessage": "Invalid or missing request parameters"
+    },
+    {
+      "ErrorCode": 401,
+      "ErrorMessage": "Invalid or no credentials passed in the request"
+    },
+    {
+      "ErrorCode": 403,
+      "ErrorMessage": "Authorization credentials passed and accepted but account does\nnot have permission"
+    },
+    {
+      "ErrorCode": 404,
+      "ErrorMessage": "The requested URI does not exist"
+    }
+  ],
+  "TestGenSettings": {
+    "Configuration": {},
+    "TestTimeout": 30,
+    "PrecisionDelta": 0.01
+  }
+}
