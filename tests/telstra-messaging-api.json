@@ -18,7 +18,7 @@
     "Parameters": []
   },
   "ImageUri": "",
-  "Description": "This Is the test we This is the strange thing to fo to do",
+  "Description": "All five",
   "Version": "1.0",
   "AdditionalHeaders": [],
   "Authentication": {
@@ -31,8 +31,8 @@
   },
   "Endpoints": [
     {
-      "Name": "Create Subscription test",
-      "Description": "Create Subscription",
+      "Name": "Create Subscription test version1",
+      "Description": "Create Subscription v1",
       "HTTPMethod": "POST",
       "Group": "Provisioning",
       "RequiresAuthentication": true,
