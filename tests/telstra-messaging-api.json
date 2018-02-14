@@ -198,6 +198,94 @@
       "WrapBodyInObject": false
     },
     {
+      "Name": "Send TMMMMMS",
+      "Description": "Send MMS",
+      "HTTPMethod": "POST",
+      "Group": "Messaging",
+      "RequiresAuthentication": true,
+      "Route": "/messages/mms",
+      "Response": {
+        "Optional": false,
+        "Type": "Dynamic",
+        "Constant": false,
+        "IsStream": false,
+        "IsAttribute": false,
+        "Attributes": {},
+        "Nullable": false,
+        "IsArray": false,
+        "IsMap": false,
+        "Name": "response"
+      },
+      "ResponseCode": 200,
+      "HasOptionalQueryParams": false,
+      "HasOptionalFieldParams": false,
+      "CollectParameters": false,
+      "RequiredScopes": [],
+      "Parameters": [
+        {
+          "ParamFormat": "Body",
+          "Optional": false,
+          "Type": "Send MMS Request",
+          "Constant": false,
+          "IsStream": false,
+          "IsAttribute": false,
+          "Attributes": {},
+          "Nullable": false,
+          "IsArray": false,
+          "IsMap": false,
+          "Name": "body",
+          "Description": "",
+          "DefaultValue": ""
+        }
+      ],
+      "Errors": [
+        {
+          "ErrorCode": 490,
+          "ErrorMessage": "The requested resource does not support the supplied verb"
+        },
+        {
+          "ErrorCode": 415,
+          "ErrorMessage": "API does not support the requested content type"
+        },
+        {
+          "ErrorCode": 422,
+          "ErrorMessage": "The request is formed correctly, but due to some condition\nthe request cannot be processed e.g. email is required and it is not provided\n\nin the request"
+        },
+        {
+          "ErrorCode": 501,
+          "ErrorMessage": "The HTTP method being used has not yet been implemented for\nthe requested resource"
+        },
+        {
+          "ErrorCode": 503,
+          "ErrorMessage": "The service requested is currently unavailable"
+        }
+      ],
+      "TestCases": [
+        {
+          "Name": "Send MMS1",
+          "Description": "Send MMS",
+          "Enabled": true,
+          "ShouldPass": true,
+          "InputParameters": [
+            {
+              "IsNull": false,
+              "Name": "body",
+              "Value": "{  \"from\": \"\",  \"to\": \"\",  \"subject\": \"\",  \"replyRequest\": false,  \"MMSContent\": [    {      \"type\": \"\",      \"filename\": \"\",      \"payload\": \"\"    }  ]}"
+            }
+          ],
+          "ExpectedStatus": "200",
+          "ExpectedHeaders": [],
+          "ExpectedHeadersAllowExtra": true,
+          "ExpectedBody": "",
+          "ExpectedBodyMatchMode": "NONE",
+          "ExpectedArrayOrderedMatching": false,
+          "ExpectedArrayCheckCount": false,
+          "ResponseMatchSchema": true
+        }
+      ],
+      "WrapBodyInObject": false
+    },
+    {
       "Name": "Get MMS Status",
       "Description": "Get MMS Status",
       "HTTPMethod": "GET",
