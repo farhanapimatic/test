@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: 2.2.4
-  title: Telstra Messaging API V100
+  title: Telstra Messaging API V10
   description: >
 
     The Telstra SMS Messaging API allows your applications to send and receive
@@ -16,6 +16,8 @@ securityDefinitions:
     type: oauth2
     flow: application
     tokenUrl: 'https://tapi.telstra.com/v2/oauth/token'
+    x-oauth2-clientid-example: "Myclientid",
+    x-oauth2-clientsecret-example: "Myclientsecret"
     scopes:
       NSMS: NSMS
 schemes:
