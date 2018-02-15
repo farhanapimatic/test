@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Telstra Portal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://dev.telstra.com/sites/all/themes/custom/tsg_theme/favicon.ico" type="image/vnd.microsoft.icon">
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .ts-portal-container {
+            width: 100%;
+        }
+
+        .header {
+            width: 100%;
+            height: 40px;
+            padding-left: 15px;
+        }
+
+        .header .logo {
+            width: 10%;
+            float: left;
+
+        }
+
+        .header .logo .name {
+            position: relative;
+            top: -10px;
+            margin-left: 10px;
+        }
+
+        .header .logo img {
+            margin-top: 0.5rem;
+            display: inline-block;
+            text-decoration: none;
+            height: 28px;
+            background-size: 25px 28px;
+            background-repeat: no-repeat;
+        }
+
+        .header .nav-bar {
+            width: 90%;
+            float: left;
+        }
+
+        .header .nav-bar ul {
+            margin: 0;
+        }
+
+        .header .nav-bar ul li {
+            font-size: 14px;
+            float: left;
+            text-decoration: none;
+            padding: 0 1.42857rem;
+            box-sizing: border-box;
+            line-height: 40px;
+            transition: background-color 0.5s ease;
+            text-decoration: none;
+            color: #222 !important;
+            display: block;
+
+        }
+
+        .header .header-centered {
+            max-width: 1500px;
+            min-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .portal-container {
+            width: 100%;
+        }
+
+        .portal-container .portal-centered {
+            max-width: 1500px;
+            min-width: 1300px;
+            margin: 0 auto;
+            clear: both;
+        }
+
+        .portal-container .sidebar {
+            width: 15%;
+            float: left;
+            padding-top: 10px;
+            padding-left: 15px;
+        }
+
+        .portal-container .sidebar h4 {
+            display: block !important;
+            overflow: visible !important;
+            width: auto !important;
+            height: auto !important;
+            position: relative !important;
+            background: white;
+            padding: 0 0 5px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: bold;
+            color: #b72758 !important;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .portal-container .sidebar ul {
+            padding-left: 20px;
+        }
+
+        .portal-container .sidebar ul li {
+            padding: 0 0 0.5rem 0 !important;
+            display: block;
+            background-color: white;
+            color: #333;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .portal-container .sidebar ul li.active {
+            background-color: white !important;
+            color: #b72758 !important;
+            font-weight: bold;
+        }
+
+        .portal-container .sidebar .breadcrumb {
+            font-size: 12px;
+            padding-left: 0;
+            background: transparent;
+            color: #848484 !important;
+            margin-bottom: 50px;
+        }
+
+
+        .portal-container .embedded-portal {
+            width: 85%;
+            float: left;
+        }
+
+        .red-btn {
+            color: #fff !important;
+            line-height: 17px;
+            width: 121px;
+            padding-left: 15px;
+            line-height: 30px;
+            height: 31px;
+            font-size: 14px;
+            font-weight: normal;
+            float: left;
+            margin-left: 3px;
+            margin-top: 5px;
+            background-color: #bb2914 !important;
+            background-repeat: no-repeat;
+            background-image: url('https://dev.telstra.com/sites/all/themes/custom/tsg_theme/sass/base/icons/svg/arrow-right-white.svg');
+            background-position: 90% 50%;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .search-input {
+            width: 120px;
+            font-size: 1rem;
+            height: 21px;
+            border: 0;
+            float: left;
+            margin: 5px 10px 0 0;
+            padding: 0.35714rem 0.71429rem;
+            font-size: 0.8rem;
+            font-family: "AkkuratStd", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #dadada;
+            border-color: #dadada;
+            display: inline-block;
+            line-height: 30px;
+            height: 30px;
+            border: 0;
+            max-width: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ts-portal-container">
+        <div class="header">
+            <div class="header-centered">
+                <div class="logo">
+                    <img src="https://dev.telstra.com/sites/all/themes/custom/tsg_theme/images/t_logo.svg">
+                    <span class="name">Developer</span>
+                </div>
+                <div class="nav-bar">
+                    <ul>
+                        <li>APIs</li>
+                        <li>Blog</li>
+                        <li>Support</li>
+                        <li>Pricing &amp; plans</li>
+                        <li>Register</li>
+                        <li>Login</li>
+                    </ul>
+                    <input placeholder="search for site" class="search-input" />
+                    <a href="" class="red-btn">Legacy Portal</a>
+                </div>
+            </div>
+        </div>
+        <div class="portal-container">
+            <div class="portal-centered">
+                <div class="sidebar">
+                    <p class="breadcrumb">Home > Messaging API</p>
+                    <h4>Messaging API</h4>
+                    <ul>
+                        <li>Getting Started</li>
+                        <li class="active">Swagger 2.0 specs</li>
+                        <li>Try it now</li>
+                    </ul>
+                </div>
+                <div class="embedded-portal">
+                    <script type="text/javascript">
+                        var font = document.createElement("link");
+                        font.rel = "stylesheet";
+                        font.href = "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800";
+                        var portalStyle = document.createElement("link");
+                        portalStyle.rel = "stylesheet";
+                        portalStyle.href = "https://dxjs.apimatic.io/static/css/main.9b04753e.css";
+                        var script = document.createElement("script");
+                        script.src = "https://dxjs.apimatic.io/static/js/portal.v4.js";
+                        script.onload = function () {
+                            APIMaticDevPortal.show({
+                                container: "apimatic-widget",
+                                portalStyle: "default",
+                                topElementHeight: 40,
+                                apiKey: "miEB6bjCKHk2lDdfg5qteUR6y6SF99pHgvA2RnZ2b7eISw4O4mOoCLksyyxCY2yB",
+                                baseUrl: "https://apimatic.io",
+                                enableExport: true,
+                                portalStyle: 'embedded',
+                                allowedLanguages: [],
+                                themeOverrides: {
+                                    palette: {
+                                        primaryColor1: "#AA0013"
+                                    }
+                                }
+                            });
+                        };
+                        document.getElementsByTagName("head")[0].appendChild(portalStyle);
+                        document.getElementsByTagName("head")[0].appendChild(script);
+                        document.getElementsByTagName("head")[0].appendChild(font);
+                    </script>
+                    <div id="apimatic-widget" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
