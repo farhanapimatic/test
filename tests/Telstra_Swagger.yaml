@@ -16,8 +16,8 @@ securityDefinitions:
     type: oauth2
     flow: application
     tokenUrl: 'https://tapi.telstra.com/v2/oauth/token'
-    x-oauth2-clientid-example: "Myclientid"
-    x-oauth2-clientsecret-example: "Myclientsecret"
+    x-oauth2-clientid-example: "4wRRjPMDqBEAHZa9DAuL31VljanYBpUL"
+    x-oauth2-clientsecret-example: "9cy7RBvBbekPWzR0"
     scopes:
       NSMS: NSMS
 schemes:
