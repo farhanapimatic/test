@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: 2.2.4
-  title: Telstra Messaging API V20
+  title: Telstra Messaging API V25
   description: >
 
     The Telstra SMS Messaging API allows your applications to send and receive
@@ -254,10 +254,10 @@ paths:
         IsMultiContentStreaming: false
     post:
       description: Send Message
-      summary: Send SMS
+      summary: Send TMS
       tags:
         - Messaging
-      operationId: Send SMS
+      operationId: Send TMS
       produces:
         - application/json
       parameters:
