@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: 2.2.4
-  title: Telstra Messaging API V25
+  title: Telstra Messaging API RajeevDemo
   description: >
 
     The Telstra SMS Messaging API allows your applications to send and receive
